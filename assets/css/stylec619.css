@@ -12387,7 +12387,6 @@ select {
   background-color: var(--artical-background-panel) !important; }
 
 select.form-control:not([multiple=multiple]) {
-  background-image: url(../images/misc/down-arrow.png);
   background-position: calc(100% - 10px) 10px, calc(100% - 20px) 13px, 100% 0;
   background-size: 12px 12px,10px 10px;
   background-repeat: no-repeat;
@@ -14874,7 +14873,6 @@ input[type=checkbox].radio-warning:checked + .custom-control-label:before, input
     right: auto;
     left: 15px; }
   .rtl select.form-control:not([multiple=multiple]) {
-    background-image: url(../images/misc/down-arrow.png);
     background-position: 1% 10px, calc(100% - 20px) 13px, 100% 0; }
   .rtl .slick-slider {
     direction: ltr; }

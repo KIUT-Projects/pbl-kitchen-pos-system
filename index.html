@@ -11,22 +11,16 @@
     <link href="./assets/api/pace/pace-theme-flat-top.css" rel="stylesheet" type="text/css"/>
     <link href="./assets/api/mcustomscrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
 
-    <!--<link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />-->
-    <!--<link href="//unpkg.com/multiple-select%401.5.2/dist/multiple-select.min.css" rel="stylesheet">-->
-    <!--<link href="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />-->
-
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
-    <!-- v6.2.1 free -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/><!-- v6.2.1 free -->
     <script src="./vendor/vue/vue.js"></script><!-- v2.7.14 -->
-    <!--<link href="./vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="./vendor/jquery/jquery-3.2.1.slim.min.js"></script>&lt;!&ndash; v3.2.1 slim &ndash;&gt;
-    <script src="./vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>&lt;!&ndash; v5.2 &ndash;&gt;
-
-    <link href="./assets/css/pricing.css" rel="stylesheet">-->
     <style>
-
+        .empty-cart{
+            display: flex;
+            justify-content: center;
+        }
+        .empty-cart > img{
+            max-width: 400px;
+        }
 
     </style>
 
@@ -291,8 +285,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div v-else>
-                                    <img class="img-fluid" src="assets/img/front/empty-cart.png">
+                                <div v-else class="empty-cart">
+                                    <img class="img-fluid" src="./assets/img/front/empty-cart.png">
                                 </div>
                             </div>
                             <div class="card-body">
@@ -345,14 +339,14 @@
                                         <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
                                             Barcha maxsulotlar
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">6</td>
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ cart.length }}</td>
 
                                     </tr>
                                     <tr class="d-flex align-items-center justify-content-between">
                                         <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
                                             Narxi
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">38 000
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ cartDetails.productsPrice }}
                                             so'm
                                         </td>
 
@@ -379,7 +373,7 @@
                                         <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
                                             Soliq
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">380
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ cartDetails.commissionPrice }}
                                             so'm
                                         </td>
 
@@ -401,8 +395,7 @@
 
                                             JAMI
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-primary font-size-base">38
-                                            380 so'm
+                                        <td class="border-0 justify-content-end d-flex text-primary font-size-base">{{ cartDetails.totalPrice }} so'm
                                         </td>
 
                                     </tr>
@@ -434,6 +427,8 @@
             </div>
         </div>
     </div>
+
+    {{ cartDetails }}
 
     <div class="modal fade text-left" id="payment-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel11"
          style="display: none;" aria-hidden="true">
@@ -755,47 +750,29 @@
     </div>
 
 
-    <script src="./assets/js/plugin.bundle.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <!--<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="//unpkg.com/multiple-select%401.5.2/dist/multiple-select.min.js"></script>-->
-    <script src="./assets/js/sweetalert.js"></script>
-    <script src="./assets/js/sweetalert1.js"></script>
-    <script src="./assets/js/script.bundle.js"></script>
-    <script>
-        jQuery(function () {
-            jQuery('.arabic-select').multipleSelect({
-                filter: true,
-                filterAcceptOnEnter: true
-            })
-        });
-        jQuery(function () {
-            jQuery('.js-example-basic-single').multipleSelect({
-                filter: true,
-                filterAcceptOnEnter: true
-            })
-        });
-        jQuery(document).ready(function () {
-            jQuery('#orderTable').DataTable({
-
-                "info": false,
-                "paging": false,
-                "searching": false,
-
-                "columnDefs": [{
-                    "targets": 'no-sort',
-                    "orderable": false,
-                }]
-            });
-        });
-    </script>
-
 </div>
+
+<script src="./assets/js/plugin.bundle.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/sweetalert.js"></script>
+<script src="./assets/js/sweetalert1.js"></script>
+<script src="./assets/js/script.bundle.js"></script>
+
+
 <script type="module">
     var vm = new Vue({
         el: '#app',
         data: {
             cart: [],
+            cartDetails: {
+                productsPrice: 0,
+                commissionPrice: 0,
+                totalPrice: 0,
+            },
+            customerDetails: {
+                address: "",
+                phone: ""
+            },
             company: {
                 phone: '',
                 email: '',
@@ -833,35 +810,58 @@
 
         },
         methods: {
-            showCart() {
-                console.log('open cart');
-                $(document).ready(function () {
-                    $('#cartModal').modal('show');
-                });
-            },
-            addToCart(id) {
+            addToCart(id){
                 console.log('product added (id: ' + id + ')')
                 this.cart.push(
                     this.getProductByID(id)
                 )
+                this.sumCart()
 
             },
-            removeFromCart(id) {
-                this.cart.forEach(function (eid, index) {
+            sumCart(){
+                let productsPrice = 0;
+                let commission = 15;
+                this.cart.forEach(function (cartProduct, index) {
+                    productsPrice += parseInt(cartProduct.price)
+                })
+
+                let commissionPrice = (productsPrice / 100 * commission)
+                this.cartDetails.productsPrice = productsPrice
+                this.cartDetails.commissionPrice = commissionPrice
+                this.cartDetails.totalPrice = productsPrice + commissionPrice
+
+            },
+            removeFromCart(id){
+                let removeCartIndex;
+                this.cart.forEach(function (eid, index){
                     console.log(eid)
                     if (eid.id === id) {
                         console.log('remove: id ' + id)
-                        Vue.delete(this.cart, index)
+                        removeCartIndex = index;
                     }
                 })
-
+                this.cart.shift(removeCartIndex)
+                this.sumCart()
             },
-            getProductByID(id) {
+            clearFromCart(){
+                this.cart = []
+                this.sumCart()
+            },
+            getProductByID(id){
                 console.log('get product (id: ' + id + ')')
                 let selected = this.products.filter(d => d.id === id)[0];
                 console.log(selected)
                 return selected
 
+            },
+            orderNow(){
+                let order = {
+                    cart: this.cart,
+                    customer: this.customerDetails,
+                    totalPrice: this.cartDetails.totalPrice
+                }
+
+                console.log(order)
             }
         }
     })

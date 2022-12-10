@@ -205,7 +205,7 @@
                                                 {{ product.name }}
                                             </p>
                                             <span>
-                                                    {{ product.price }} so'm
+                                                    {{ priceFormat(product.price) }} so'm
                                                 </span>
                                         </div>
                                     </div>
@@ -268,12 +268,12 @@
                                         <tbody>
                                         <tr v-for="cProduct in cart">
                                             <td>{{ cProduct.name }}</td>
-                                            <td>{{ cProduct.price }} so'm</td>
+                                            <td>{{ priceFormat(cProduct.price) }} so'm</td>
                                             <td>
                                                 <input type="number" value="1" class="form-control border-dark w-100px"
                                                        id="basicInput2" placeholder="">
                                             </td>
-                                            <td>{{ cProduct.price }} so'm</td>
+                                            <td>{{ priceFormat(cProduct.price) }} so'm</td>
                                             <td>
                                                 <div class="card-toolbar text-right">
                                                     <a @click="removeFromCart(id)" href="#" class="confirm-delete"
@@ -346,7 +346,7 @@
                                         <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
                                             Narxi
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ cartDetails.productsPrice }}
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ priceFormat(cartDetails.productsPrice) }}
                                             so'm
                                         </td>
 
@@ -373,7 +373,7 @@
                                         <th class="border-0 font-size-h5 mb-0 font-size-bold text-dark">
                                             Soliq
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ cartDetails.commissionPrice }}
+                                        <td class="border-0 justify-content-end d-flex text-dark font-size-base">{{ priceFormat(cartDetails.commissionPrice) }}
                                             so'm
                                         </td>
 
@@ -395,7 +395,7 @@
 
                                             JAMI
                                         </th>
-                                        <td class="border-0 justify-content-end d-flex text-primary font-size-base">{{ cartDetails.totalPrice }} so'm
+                                        <td class="border-0 justify-content-end d-flex text-primary font-size-base">{{ priceFormat(cartDetails.totalPrice) }} so'm
                                         </td>
 
                                     </tr>
@@ -862,7 +862,34 @@
                 }
 
                 console.log(order)
+            },
+            priceFormat(price, add = ''){
+                return this.number_format(price, 0, '.', ' ') + '' + add;
+            },
+            number_format (number, decimals = 0, dec_point = '.', thousands_sep = ' ') {
+                // Strip all characters but numerical ones.
+                number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+                var n = !isFinite(+number) ? 0 : +number,
+                    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                    s = '',
+                    toFixedFix = function (n, prec) {
+                        var k = Math.pow(10, prec);
+                        return '' + Math.round(n * k) / k;
+                    };
+                // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+                s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+                if (s[0].length > 3) {
+                    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+                }
+                if ((s[1] || '').length < prec) {
+                    s[1] = s[1] || '';
+                    s[1] += new Array(prec - s[1].length + 1).join('0');
+                }
+                return s.join(dec);
             }
+
         }
     })
 </script>

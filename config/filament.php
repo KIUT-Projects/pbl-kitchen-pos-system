@@ -316,6 +316,7 @@ return [
     'middleware' => [
         'auth' => [
             Authenticate::class,
+            \io3x1\FilamentTranslations\Http\Middleware\LanguageMiddleware::class
         ],
         'base' => [
             EncryptCookies::class,

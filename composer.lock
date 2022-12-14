@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc2b31254092f19be0c740cc1e2b87f2",
+    "content-hash": "19ea13ff26098419ab452c3ec0527bf1",
     "packages": [
+        {
+            "name": "3x1io/filament-translations",
+            "version": "v1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/3x1io/filament-translations.git",
+                "reference": "f4d44e5f973870d9d00795b2442eef10a49234ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/3x1io/filament-translations/zipball/f4d44e5f973870d9d00795b2442eef10a49234ae",
+                "reference": "f4d44e5f973870d9d00795b2442eef10a49234ae",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.9",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.10",
+                "spatie/laravel-translation-loader": "^2.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "io3x1\\FilamentTranslations\\FilamentTranslationsProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "io3x1\\FilamentTranslations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "3x1",
+                    "email": "info@3x1.io",
+                    "role": "CEO"
+                }
+            ],
+            "description": "Translations With DB & UI",
+            "homepage": "https://3x1.io",
+            "keywords": [
+                "filament",
+                "laravel",
+                "translations",
+                "ui"
+            ],
+            "support": {
+                "issues": "https://github.com/3x1io/filament-translations/issues",
+                "source": "https://github.com/3x1io/filament-translations/tree/v1.1.6"
+            },
+            "time": "2022-06-06T18:20:48+00:00"
+        },
         {
             "name": "akaunting/laravel-money",
             "version": "3.1.2",
@@ -384,6 +442,72 @@
                 }
             ],
             "time": "2022-01-21T11:26:58+00:00"
+        },
+        {
+            "name": "devtical/filament-sanctum",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devtical/filament-sanctum.git",
+                "reference": "9208ed6a5fde183d22162562490dafcc515d5ef6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devtical/filament-sanctum/zipball/9208ed6a5fde183d22162562490dafcc515d5ef6",
+                "reference": "9208ed6a5fde183d22162562490dafcc515d5ef6",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.0",
+                "illuminate/contracts": "^9.0",
+                "laravel/sanctum": "^3.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.20"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Devtical\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devtical\\Sanctum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wahyu Kristianto",
+                    "email": "w.kristories@gmail.com"
+                }
+            ],
+            "description": "Filament Sanctum",
+            "homepage": "https://github.com/devtical/filament-sanctum",
+            "keywords": [
+                "Devtical",
+                "laravel",
+                "sanctum"
+            ],
+            "support": {
+                "issues": "https://github.com/devtical/filament-sanctum/issues",
+                "source": "https://github.com/devtical/filament-sanctum/tree/v0.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Kristories",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-20T16:57:11+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -4115,6 +4239,84 @@
             "time": "2022-09-02T11:04:28+00:00"
         },
         {
+            "name": "saade/filament-laravel-log",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/saade/filament-laravel-log.git",
+                "reference": "4fe4bce62df5861d30d2e0c2b20c54afb038de41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/saade/filament-laravel-log/zipball/4fe4bce62df5861d30d2e0c2b20c54afb038de41",
+                "reference": "4fe4bce62df5861d30d2e0c2b20c54afb038de41",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.10",
+                "illuminate/contracts": "^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^6.0",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Saade\\FilamentLaravelLog\\FilamentLaravelLogServiceProvider"
+                    ],
+                    "aliases": {
+                        "FilamentLaravelLog": "Saade\\FilamentLaravelLog\\Facades\\FilamentLaravelLog"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Saade\\FilamentLaravelLog\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saade",
+                    "email": "saade@outlook.com.br",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Access laravel.log file through Filament admin panel",
+            "homepage": "https://github.com/saade/filament-laravel-log",
+            "keywords": [
+                "filament-laravel-log",
+                "laravel",
+                "saade"
+            ],
+            "support": {
+                "issues": "https://github.com/saade/filament-laravel-log/issues",
+                "source": "https://github.com/saade/filament-laravel-log/tree/v1.1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/danharrin",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-21T12:34:33+00:00"
+        },
+        {
             "name": "spatie/image",
             "version": "2.2.4",
             "source": {
@@ -4469,6 +4671,76 @@
                 }
             ],
             "time": "2022-11-15T09:10:09+00:00"
+        },
+        {
+            "name": "spatie/laravel-translation-loader",
+            "version": "2.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-translation-loader.git",
+                "reference": "8c12c702af169c8133fa845a72bf8947ae4d442a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-translation-loader/zipball/8c12c702af169c8133fa845a72bf8947ae4d442a",
+                "reference": "8c12c702af169c8133fa845a72bf8947ae4d442a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/translation": "^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\TranslationLoader\\TranslationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\TranslationLoader\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Store your language lines in the database, yaml or other sources",
+            "homepage": "https://github.com/spatie/laravel-translation-loader",
+            "keywords": [
+                "database",
+                "db",
+                "i8n",
+                "language",
+                "laravel",
+                "laravel-translation-loader",
+                "spatie",
+                "translate"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/laravel-translation-loader/tree/2.7.4"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-23T18:25:49+00:00"
         },
         {
             "name": "spatie/temporary-directory",

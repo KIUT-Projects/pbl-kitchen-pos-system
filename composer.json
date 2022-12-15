@@ -6,8 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "3x1io/filament-translations": "^1.1",
-        "devtical/filament-sanctum": "^0.0.2",
         "filament/filament": "^2.16",
         "filament/forms": "^2.16",
         "filament/spatie-laravel-media-library-plugin": "^2.16",

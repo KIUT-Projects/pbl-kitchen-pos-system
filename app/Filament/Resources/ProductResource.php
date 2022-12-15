@@ -10,6 +10,7 @@ use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -28,7 +29,7 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationIcon = 'heroicon-o-cake';
+    protected static ?string $navigationIcon = 'heroicon-o-view-grid';
 
     public static function form(Form $form): Form
     {
@@ -40,7 +41,11 @@ class ProductResource extends Resource
                     })->required(),
                     TextInput::make('slug')->required()->disabled(),
                     BelongsToSelect::make('category_id')->relationship('category', 'name')->required()->default(1),
-                    SpatieMediaLibraryFileUpload::make('photo')->collection('products'),
+                    FileUpload::make('photo')->image(),
+                    //SpatieMediaLibraryFileUpload::make('photo'),
+                    //\Filament\Forms\Components\SpatieMediaLibraryFileUpload::make('photo')->collection('products'),
+                    //\Filament\Tables\Columns\SpatieMediaLibraryImageColumn::make('photo')->collection('products'),
+                    TextInput::make('price')->helperText('Narxini int korinishida kiritilsin'),
                     RichEditor::make('description'),
                     Toggle::make('is_published')
                 ])
@@ -51,7 +56,8 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibraryImageColumn::make('photo')->collection('products'),
+                //SpatieMediaLibraryImageColumn::make('photo')->collection('products'),
+                \Filament\Tables\Columns\SpatieMediaLibraryImageColumn::make('photo')->collection('products'),
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('name')->limit(50)->sortable()->searchable(),
                 TextColumn::make('slug')->limit(50),

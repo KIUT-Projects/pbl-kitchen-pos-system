@@ -11,7 +11,7 @@ class Product extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['category_id', 'name', 'slug', 'description', 'price', 'is_published'];
+    protected $fillable = ['category_id', 'name', 'slug', 'photo', 'description', 'price', 'is_published'];
 
     protected $casts = ['is_published' => 'boolean'];
 

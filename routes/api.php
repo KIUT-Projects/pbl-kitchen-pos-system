@@ -21,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::any('/products', [ApiController::class, 'products']);
 Route::any('/product/{id}', [ApiController::class, 'product']);
+
+Route::any('/order/store', [ApiController::class, 'orderStore']);
+

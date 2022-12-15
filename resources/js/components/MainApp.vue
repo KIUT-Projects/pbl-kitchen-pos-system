@@ -7,7 +7,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="greeting-text">
                         <h3 class="card-label mb-0 font-weight-bold text-primary">
-                            KUIT Oshona
+                            KIUT Oshona
                         </h3>
                         <h3 class="card-label mb-0 ">
                             ISE-51U
@@ -164,7 +164,7 @@
                                      @click="addToCart(product.id)">
                                     <div class="productCard">
                                         <div class="productThumb">
-                                            <img class="img-fluid" :src="'/assets/img' + product.image" alt="ix">
+                                            <img class="img-fluid" :src="product.photo" alt="ix">
                                         </div>
                                         <div class="productContent">
                                             <p>
@@ -191,13 +191,13 @@
                                     <div class="selectmain">
                                         <label class="text-dark d-flex" for="form1">Xaridorning ismi</label>
                                         <input type="text" class="form-control border-dark" id="form1"
-                                               placeholder="Aliyev Ali" name="customer_name">
+                                               placeholder="Aliyev Ali" name="customer_name" v-model="customerDetails.name">
                                     </div>
 
                                     <div class="d-flex flex-column selectmain">
                                         <label class="text-dark d-flex" for="form2">Xaridorning telefon raqami</label>
                                         <input type="text" class="form-control border-dark" id="form2"
-                                               placeholder="+998 " value="+998 " name="customer_phone">
+                                               placeholder="+998 " name="customer_phone" v-model="customerDetails.phone">
                                     </div>
                                 </div>
                             </div>
@@ -208,14 +208,6 @@
                                     <div class="col-md-12">
                                         <label>Tanlangan mahsulotlar</label> <!--<b>Jami: 11ta</b>-->
 
-                                        <fieldset class="form-group mb-0 d-flex barcodeselection">
-                                            <select class="form-control w-50" id="exampleFormControlSelect1">
-                                                <option>Ismi bo'yicha</option>
-                                                <option>Narxi bo'yicha</option>
-                                            </select>
-                                            <input type="text" class="form-control border-dark" id="basicInput1"
-                                                   placeholder="Qidiruv">
-                                        </fieldset>
                                     </div>
                                 </div>
                             </div>
@@ -226,8 +218,8 @@
                                         <tr>
                                             <th>Nomi</th>
                                             <th>Narxi</th>
-                                            <th>Soni</th>
-                                            <th>Jami</th>
+<!--                                            <th>Soni</th>-->
+<!--                                            <th>Jami</th>-->
                                             <th class=" text-right no-sort"></th>
                                         </tr>
                                         </thead>
@@ -235,11 +227,11 @@
                                         <tr v-for="cProduct in cart">
                                             <td>{{ cProduct.name }}</td>
                                             <td>{{ priceFormat(cProduct.price) }} so'm</td>
-                                            <td>
+<!--                                            <td>
                                                 <input type="number" value="1" class="form-control border-dark w-100px"
                                                        id="basicInput2" placeholder="">
-                                            </td>
-                                            <td>{{ priceFormat(cProduct.price) }} so'm</td>
+                                            </td>-->
+<!--                                            <td>{{ priceFormat(cProduct.price) }} so'm</td>-->
                                             <td>
                                                 <div class="card-toolbar text-right">
                                                     <a @click="removeFromCart(id)" href="#" class="confirm-delete"
@@ -258,16 +250,9 @@
                             <div class="card-body">
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 btn-submit d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-danger mr-2 confirm-delete" title="Delete">
+                                        <button @click="clearFromCart()" type="submit" class="btn btn-danger mr-2" title="Delete">
                                             <i class="fas fa-trash-alt mr-2"></i>
                                             Bekor qilish
-                                        </button>
-                                        <button type="submit" class="btn btn-secondary white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                 class="bi bi-folder-fill svg-sm mr-2" viewBox="0 0 16 16">
-                                                <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
-                                            </svg>
-                                            Saqlab qoyish
                                         </button>
                                     </div>
                                 </div>
@@ -352,18 +337,11 @@
                                 </table>
                             </div>
                             <div class="d-flex justify-content-end align-items-center flex-column buttons-cash">
-                                <div>
-                                    <a href="#" class="btn btn-primary white mb-2" data-toggle="modal"
-                                       data-target="#payment-popup">
-                                        <i class="fas fa-money-bill-wave mr-2"></i>
-                                        Naxt to'lov qilish
-                                    </a>
 
-                                </div>
                                 <div>
-                                    <a href="#" class="btn btn-outline-secondary ">
+                                    <a href="#" class="btn btn-success" id="paymentModal" data-toggle="modal" data-target="#payment-popup">
                                         <i class="fas fa-credit-card mr-2"></i>
-                                        Kartadan to'lov qilish
+                                        Buyurtmani yakunlash
                                     </a>
 
                                 </div>
@@ -381,7 +359,7 @@
         <div class="modal-dialog modal-dialog-scrollable  modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="myModalLabel11">Payment</h3>
+                    <h3 class="modal-title" id="myModalLabel11">Tolov</h3>
                     <button type="button" class="close rounded-pill btn btn-sm btn-icon btn-light btn-hover-primary m-0"
                             data-dismiss="modal" aria-label="Close">
                         <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
@@ -397,24 +375,24 @@
                         <tr class="d-flex align-items-center justify-content-between">
                             <th class="border-0 px-0 font-size-lg mb-0 font-size-bold text-primary">
 
-                                Total Amount to Pay :
+                                Jami summa :
 
                             </th>
                             <td class="border-0 justify-content-end d-flex text-primary font-size-lg font-size-bold px-0 font-size-lg mb-0 font-size-bold text-primary">
 
-                                $722
+                                {{ priceFormat(cartDetails.totalPrice) }}
 
                             </td>
                         </tr>
                         <tr class="d-flex align-items-center justify-content-between">
                             <th class="border-0 px-0 font-size-lg mb-0 font-size-bold text-primary">
 
-                                Payment Mode :
+                                Tolov turi :
 
                             </th>
                             <td class="border-0 justify-content-end d-flex text-primary font-size-lg font-size-bold px-0 font-size-lg mb-0 font-size-bold text-primary">
 
-                                Cash
+                                Naxt
 
                             </td>
 
@@ -422,32 +400,20 @@
                         </tbody>
                     </table>
                     <form>
+
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <label class="text-body">Received Amount</label>
-                                <fieldset class="form-group mb-3">
-                                    <input type="text" name="number" class="form-control" value="$1000"
-                                           placeholder="Enter Amount ">
-                                </fieldset>
-                                <div class="p-3 bg-light-dark d-flex justify-content-between border-bottom">
-                                    <h5 class="font-size-bold mb-0">Amount to Return :</h5>
-                                    <h5 class="font-size-bold mb-0">-$20</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label class="text-body">Note (If any)</label>
+                                <label class="text-body">Qaydlar uchun (majburiy emas)</label>
                                 <fieldset class="form-label-group ">
                                     <textarea class="form-control fixed-size" id="horizontalTextarea" rows="5"
-                                              placeholder="Enter Note"></textarea>
+                                              placeholder="Qayd kiriting" v-model="customerDetails.comment"></textarea>
 
                                 </fieldset>
                             </div>
                         </div>
                         <div class="form-group row justify-content-end mb-0">
-                            <div class="col-md-6  text-right">
-                                <a href="#" class="btn btn-primary">Submit</a>
+                            <div class="col-md-6 text-right">
+                                <a href="#" @click="orderNow()" class="btn btn-lg btn-success">Buyurtmani tasdiqlash</a>
                             </div>
                         </div>
                     </form>
@@ -459,6 +425,7 @@
 </template>
 
 <script>
+import apiPos from "../api/apiPos";
 export default {
     name: "MainApp",
     data() {
@@ -470,8 +437,9 @@ export default {
                 totalPrice: 0,
             },
             customerDetails: {
-                address: "",
-                phone: ""
+                name: "",
+                phone: "+998",
+                comment: ""
             },
             company: {
                 phone: '',
@@ -489,29 +457,26 @@ export default {
                     ]
                 }
             },
-            products: [
-                {id: 1, name: "Osh", price: "20000", image: "/food/osh.jpg"},
-                {id: 2, name: "Norin", price: "22000", image: "/food/norin.jpg"},
-                {id: 3, name: "Achchiq chuchuk", price: "8000", image: "/food/achchiq.jpg"},
-                {id: 4, name: "Non (4ta bo'lak)", price: "500", image: "/food/non.jpg"},
-                {id: 5, name: "Ko'k choy (choynakda)", price: "1000", image: "/food/kokchoy.jpg"},
-            ]
+            products: []
         }
     },
     created() {
-        /*$(document).ready(function () {
-            if (jQuery) {
-                console.log('Jquery working')
-            } else {
-                alert("Jquery not working");
-            }
-        });*/
+        //
     },
     mounted() {
-
+        this.apiGetProducts();
     },
     methods: {
-
+        apiGetProducts(){
+            apiPos.getProducts().then((response) => {
+                if(response.data.status){
+                    //console.log(response.data)
+                    this.products = response.data.data
+                }else{
+                    console.log(response.data)
+                }
+            })
+        },
 
         addToCart(id){
             console.log('product added (id: ' + id + ')')
@@ -537,7 +502,7 @@ export default {
         removeFromCart(id){
             let removeCartIndex;
             this.cart.forEach(function (eid, index){
-                console.log(eid)
+                //console.log(eid)
                 if (eid.id === id) {
                     console.log('remove: id ' + id)
                     removeCartIndex = index;
@@ -552,10 +517,7 @@ export default {
         },
         getProductByID(id){
             console.log('get product (id: ' + id + ')')
-            let selected = this.products.filter(d => d.id === id)[0];
-            console.log(selected)
-            return selected
-
+            return this.products.filter(d => d.id === id)[0];
         },
         orderNow(){
             let order = {
@@ -563,6 +525,35 @@ export default {
                 customer: this.customerDetails,
                 totalPrice: this.cartDetails.totalPrice
             }
+
+            apiPos.sendOrder(order).then((response) => {
+                if(response.data.status){
+                    console.log('order sent')
+                    console.log(response.data)
+
+                    this.cart = []
+
+                    this.cartDetails = {
+                        productsPrice: 0,
+                            commissionPrice: 0,
+                            totalPrice: 0,
+                    }
+
+                    this.customerDetails = {
+                        name: "",
+                        phone: "+998 ",
+                        comment: ""
+                    }
+
+                    //$('#payment-popup').modal('hide')
+                    document.getElementById('payment-popup').click();
+
+
+                    //this.products = response.data.data
+                }else{
+                    console.log(response.data)
+                }
+            })
 
             console.log(order)
         },

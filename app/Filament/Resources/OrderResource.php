@@ -34,6 +34,7 @@ class OrderResource extends Resource
                     TextInput::make('surname')->required(),
                     TextInput::make('phone')->required(),
                     TextInput::make('address')->required(),
+                    RichEditor::make('comment'),
                     RichEditor::make('products'),
                     TextInput::make('total')->required(),
                     Toggle::make('status')
@@ -47,7 +48,7 @@ class OrderResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('name')->limit(50)->sortable()->searchable(),
-                TextColumn::make('surname')->limit(50)->sortable()->searchable(),
+                //TextColumn::make('surname')->limit(50)->sortable()->searchable(),
                 TextColumn::make('total')->limit(50)->sortable()->searchable(),
                 BooleanColumn::make('status')
             ])

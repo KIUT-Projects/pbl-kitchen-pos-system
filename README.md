@@ -12,9 +12,9 @@ parol: `password`
 
 ### Guruh azolari:
 - Umarov Kamoliddin
-- Mirxoliqov Kamron
-- 3
-- 4
+- Mirxaliqov Kamron
+- Mardonov Kamron
+- Norboyev Aziz
 
 ### Ishlatilgan texnologiyalar:
 - Laravel v9 Framework (Backend)

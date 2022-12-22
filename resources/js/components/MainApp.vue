@@ -112,7 +112,7 @@
                             <div class="dropdown-menu dropdown-menu-right" style="min-width: 150px;">
 
 
-                                <a href="#" class="dropdown-item">
+                                <a href="/admin" class="dropdown-item">
 							 <span class="svg-icon svg-icon-xl svg-icon-primary mr-2">
 								 <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"
                                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -121,7 +121,7 @@
 									 <line x1="12" y1="2" x2="12" y2="12"></line>
 								 </svg>
 							 </span>
-                                    Logout
+                                    Panelga kirish
                                 </a>
                             </div>
 

@@ -38,6 +38,15 @@ composer install
 npm install
 ```
 ```shell
+php artisan key:generate
+```
+```shell
+php artisan optimize:clear
+```
+```shell
+php artisan migrate
+```
+```shell
 php artisan storage:link
 ```
 
@@ -48,3 +57,14 @@ php artisan serve
 ```shell
 npm run dev
 ```
+
+## 📂 Download Source Code (v1.2):
+Source: https://github.com/KIUT-Projects/pbl-kitchen-pos-system/archive/refs/tags/v1.2.zip
+
+## 🌐 Live Preview:
+Live: https://kiut-projects.github.io/pbl-kitchen-pos-system
+
+
+## 🖼 Skrinshotlar:
+![](.github/screenshot.png)
+![](.github/screenshot-2.png)

@@ -24,20 +24,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/><!-- v6.2.1 free -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    {{--
-    <script src="/vendor/vue/vue.js"></script><!-- v2.7.14 -->
-    --}}
-    <style>
-        .empty-cart{
-            display: flex;
-            justify-content: center;
-        }
-        .empty-cart > img{
-            max-width: 400px;
-        }
-
-    </style>
-
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
 </head>

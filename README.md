@@ -1,32 +1,32 @@
-## 🖥 PBL - YTIT Oshxona sistemasi
+## 🖥 PBL - YTIT Kitchen system
 
-ISE-51U guruhi tomonidan bajarilgan PBL uchun proyekt
+Project for PBL done by ISE-51U group
 
 ## 🐙 Github (Source Code)
 Github: https://github.com/KIUT-Projects/pbl-kitchen-pos-system
 
-## Admin malumotlari
+## Admin details:
 login: `admin@ytit.uz`
 
-parol: `password`
+password: `password`
 
-### Guruh azolari:
+### Group members:
 - Umarov Kamoliddin
 - Mirxaliqov Kamron
 - Mardonov Kamron
 - Norboyev Aziz
 
-### Ishlatilgan texnologiyalar:
+### Used technologies:
 - Laravel v9 Framework (Backend)
 - VueJS v3 Framework (Frontend)
 - Bootstrap v4 Framework (Frontend CSS)
 
-### Ishlatilgan paketlar:
+### Used packages:
 - larave-vite
 - laravel-mix
 - filament (admin panel)
 
-### O'rnatish ketma ketligi
+### Installation guide
 
 ```shell
 git clone https://github.com/KIUT-Projects/pbl-kitchen-pos-system.git
@@ -50,7 +50,7 @@ php artisan migrate
 php artisan storage:link
 ```
 
-### Ishga tushirish
+### Run in localhost
 ```shell
 php artisan serve
 ```
@@ -65,6 +65,10 @@ Source: https://github.com/KIUT-Projects/pbl-kitchen-pos-system/archive/refs/tag
 Live: https://kiut-projects.github.io/pbl-kitchen-pos-system
 
 
-## 🖼 Skrinshotlar:
-![](.github/screenshot.png)
-![](.github/screenshot-2.png)
+## 🖼 Screenshorts:
+![](.github/screenshot-1.jpg)
+![](.github/screenshot-2.jpg)
+![](.github/screenshot-3.jpg)
+![](.github/screenshot-4.jpg)
+![](.github/screenshot-5.jpg)
+![](.github/screenshot-6.jpg)
